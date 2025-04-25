@@ -1,0 +1,1 @@
+select dname from department where mgr_start_date > '1987-12-31' and mgr_start_date < '1999-01-01';

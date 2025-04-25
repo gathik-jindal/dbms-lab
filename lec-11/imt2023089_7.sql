@@ -1,0 +1,1 @@
+select e1.fname, e1.minit, e1.lname, e1.salary, e2.salary from employee as e1, employee as e2 where e1.super_ssn=e2.ssn;

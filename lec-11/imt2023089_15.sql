@@ -1,0 +1,1 @@
+select dependent_name from dependent where relationship='Son' or relationship='Daughter';

@@ -1,0 +1,1 @@
+select ssn, dno, salary from employee order by dno, salary asc;

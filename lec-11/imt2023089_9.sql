@@ -1,0 +1,1 @@
+select p.pname, COUNT(w.essn) from project as p, works_on as w where p.pnumber=w.pno group by pname;

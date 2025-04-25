@@ -1,0 +1,1 @@
+select d.dependent_name from dependent as d, employee as e where e.ssn=d.essn;

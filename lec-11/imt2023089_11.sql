@@ -1,0 +1,1 @@
+select ssn, dno, salary from employee where sex='F' order by dno, salary;

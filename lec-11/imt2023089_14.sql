@@ -1,0 +1,1 @@
+select essn from works_on where hours>(select avg(hours) from works_on);
