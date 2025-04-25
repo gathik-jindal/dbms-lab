@@ -34,11 +34,20 @@
 
 ### Tables Description
 
+#### Countries
+
+| Field            | Description                                           |
+| ---------------- | ----------------------------------------------------- |
+| CountryID        | Unique country identifier                             |
+| Name             | Official name of the country                          |
+| ICAOCode         | ICAO country code                                     |
+| AirspaceCapacity | Optional: flight volume capacity of national airspace |
+
 #### Airports
 
 | Field              | Description                                        |
 | ------------------ | -------------------------------------------------- |
-| ID                 | Unique identifier for the airport                  |
+| AirportID          | Unique identifier for the airport                  |
 | Name               | Full name of the airport                           |
 | Location           | City and country of the airport                    |
 | PassengerTerminals | Number of terminals for passengers                 |
@@ -46,11 +55,21 @@
 | Capacity           | Max passengers the airport can handle per terminal |
 | Runways            | Number of runways the airport has                  |
 
+#### Airlines
+
+| Field                | Description                                            |
+| -------------------- | ------------------------------------------------------ |
+| AirlineID            | Unique airline identifier                              |
+| Name                 | Official name of the airline                           |
+| CountryID            | Foreign key to the airline’s country of origin         |
+| FleetSize            | Number of aircraft in operation                        |
+| InternationalCarrier | Whether the airline has international rights (boolean) |
+
 #### Slots
 
 | Field           | Description                                            |
 | --------------- | ------------------------------------------------------ |
-| ID              | Unique slot identifier                                 |
+| SlotID          | Unique slot identifier                                 |
 | AirportID       | Foreign key referencing Airports                       |
 | AirlineID       | Foreign key referencing Airlines                       |
 | StartTime       | Start time of slot                                     |
@@ -59,53 +78,33 @@
 | ParkingDuration | Duration the aircraft stays at the airport             |
 | Season          | Season for which the slot is valid (e.g., Summer 2025) |
 
-#### Routes
-
-| Field         | Description                                        |
-| ------------- | -------------------------------------------------- |
-| ID            | Unique route identifier                            |
-| FromAirportID | Departure airport (foreign key to Airports)        |
-| ToAirportID   | Destination airport (foreign key)                  |
-| Distance      | Distance between airports (in km or miles)         |
-| TreatyID      | If international, links to a Treaty (or else NULL) |
-
-#### Airlines
-
-| Field                | Description                                            |
-| -------------------- | ------------------------------------------------------ |
-| ID                   | Unique airline identifier                              |
-| Name                 | Official name of the airline                           |
-| CountryID            | Foreign key to the airline’s country of origin         |
-| FleetSize            | Number of aircraft in operation                        |
-| InternationalCarrier | Whether the airline has international rights (boolean) |
-
 #### Treaties
 
 | Field                 | Description                                            |
 | --------------------- | ------------------------------------------------------ |
-| ID                    | Unique treaty identifier                               |
+| TreatyID              | Unique treaty identifier                               |
 | CountryAID            | First country involved                                 |
 | CountryBID            | Second country involved                                |
 | AllowedFlightsPerWeek | Max flights allowed between the two countries per week |
 | ValidFrom             | Start date of the treaty                               |
 | ValidUntil            | End/review date of the treaty                          |
-| Notes                 | Additional details or special clauses                  |
+
+#### Routes
+
+| Field         | Description                                        |
+| ------------- | -------------------------------------------------- |
+| RouteID       | Unique route identifier                            |
+| FromAirportID | Departure airport (foreign key to Airports)        |
+| ToAirportID   | Destination airport (foreign key)                  |
+| Distance      | Distance between airports (in km or miles)         |
+| TreatyID      | If international, links to a Treaty (or else NULL) |
 
 #### TreatyAirline
 
 | Field     | Description                   |
 | --------- | ----------------------------- |
-| TreatyID  | Forgien key to Treaties table |
-| AirlineID | Forgien key to Airlines table |
-
-#### Countries
-
-| Field            | Description                                           |
-| ---------------- | ----------------------------------------------------- |
-| ID               | Unique country identifier                             |
-| Name             | Official name of the country                          |
-| ICAOCode         | ICAO country code                                     |
-| AirspaceCapacity | Optional: flight volume capacity of national airspace |
+| TreatyID  | Foreign key to Treaties table |
+| AirlineID | Foreign key to Airlines table |
 
 ## UML Code
 
