@@ -62,6 +62,7 @@
 | AirlineID            | Unique airline identifier                              |
 | Name                 | Official name of the airline                           |
 | CountryID            | Foreign key to the airline’s country of origin         |
+| Location             | Location of airpot                                     |
 | FleetSize            | Number of aircraft in operation                        |
 | InternationalCarrier | Whether the airline has international rights (boolean) |
 

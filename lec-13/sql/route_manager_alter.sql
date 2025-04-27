@@ -1,0 +1,1 @@
+-- No need to alter table since all our foreign keys are properly referenced
